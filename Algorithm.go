@@ -16,6 +16,58 @@ func printList(head *Node) {
 	fmt.Println();
 }
 
+func merge(head1, head2 *Node) Node {
+
+	var head Node
+	var cursor *Node  = &head;
+
+	for (head1 != nil || head2 != nil) {
+		if (head1 == nil) {
+			cursor.data = head2.data
+			if (head2.next != nil) {
+				var tmp Node;
+				cursor.next = &tmp;
+				cursor = cursor.next;
+			} else {
+				cursor = nil;
+			}
+
+			head2 = head2.next
+			continue
+		}
+
+
+		if (head2 == nil) {
+			cursor.data = head1.data;
+
+			if (head1.next != nil) {
+				var tmp Node;
+				cursor.next = &tmp;
+				cursor = cursor.next;
+			} else {
+				cursor = nil;
+			}
+
+			head1 = head1.next;
+			continue;
+		}
+
+		if (head1.data <= head2.data) {
+			cursor.data = head1.data;
+			head1 = head1.next;
+		} else {
+			cursor.data = head2.data;
+			head2 = head2.next;
+		}
+
+		var tmp Node;
+		cursor.next = &tmp;
+		cursor = cursor.next;
+	}
+
+	return head;
+}
+
 func main() {
 	var list1 Node
 	list1.data = 2
@@ -43,4 +95,6 @@ func main() {
 	item4.next = nil
 	printList(&list2)
 
+	var list3 = merge(&list1, &list2)
+	printList(&list3)
 }
