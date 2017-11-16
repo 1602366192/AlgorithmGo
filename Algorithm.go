@@ -25,8 +25,7 @@ func merge(head1, head2 *Node) Node {
 		if (head1 == nil) {
 			cursor.data = head2.data
 			if (head2.next != nil) {
-				var tmp Node;
-				cursor.next = &tmp;
+				cursor.next = &Node{};
 				cursor = cursor.next;
 			} else {
 				cursor = nil;
@@ -41,8 +40,7 @@ func merge(head1, head2 *Node) Node {
 			cursor.data = head1.data;
 
 			if (head1.next != nil) {
-				var tmp Node;
-				cursor.next = &tmp;
+				cursor.next = new(Node);
 				cursor = cursor.next;
 			} else {
 				cursor = nil;
@@ -60,8 +58,7 @@ func merge(head1, head2 *Node) Node {
 			head2 = head2.next;
 		}
 
-		var tmp Node;
-		cursor.next = &tmp;
+		cursor.next = &Node{};
 		cursor = cursor.next;
 	}
 
@@ -98,3 +95,4 @@ func main() {
 	var list3 = merge(&list1, &list2)
 	printList(&list3)
 }
+
