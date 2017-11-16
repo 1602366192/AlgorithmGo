@@ -13,7 +13,7 @@ func printList(head *Node) {
 		fmt.Print(" ")
 		head = head.next
 	}
-	fmt.Println()
+	fmt.Println();
 }
 
 func main() {
@@ -29,5 +29,18 @@ func main() {
 	item1.next = &item2
 	item2.next = nil
 	printList(&list1)
+
+	var list2 Node
+	list2.data = 3
+
+	var item3 Node
+	item3.data = 6;
+	list2.next = &item3
+
+	var item4 Node
+	item4.data = 7
+	item3.next = &item4
+	item4.next = nil
+	printList(&list2)
 
 }
