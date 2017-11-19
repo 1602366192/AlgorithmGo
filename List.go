@@ -2,12 +2,12 @@ package main
 
 import "fmt"
 
-type Node struct {
+type ListNode struct {
 	data int
-	next *Node
+	next *ListNode
 }
 
-func printList(head *Node) {
+func printList(head *ListNode) {
 	for (head != nil) {
 		fmt.Print(head.data)
 		fmt.Print(" ")
@@ -16,16 +16,16 @@ func printList(head *Node) {
 	fmt.Println();
 }
 
-func merge(head1, head2 *Node) Node {
+func merge(head1, head2 *ListNode) ListNode {
 
-	var head Node
-	var cursor *Node  = &head;
+	var head ListNode
+	var cursor *ListNode = &head;
 
 	for (head1 != nil || head2 != nil) {
 		if (head1 == nil) {
 			cursor.data = head2.data
 			if (head2.next != nil) {
-				cursor.next = &Node{};
+				cursor.next = &ListNode{};
 				cursor = cursor.next;
 			} else {
 				cursor = nil;
@@ -40,7 +40,7 @@ func merge(head1, head2 *Node) Node {
 			cursor.data = head1.data;
 
 			if (head1.next != nil) {
-				cursor.next = new(Node);
+				cursor.next = new(ListNode);
 				cursor = cursor.next;
 			} else {
 				cursor = nil;
@@ -58,7 +58,7 @@ func merge(head1, head2 *Node) Node {
 			head2 = head2.next;
 		}
 
-		cursor.next = &Node{};
+		cursor.next = &ListNode{};
 		cursor = cursor.next;
 	}
 
@@ -66,27 +66,27 @@ func merge(head1, head2 *Node) Node {
 }
 
 func testMerge() {
-	var list1 Node
+	var list1 ListNode
 	list1.data = 2
 
-	var item1 Node
+	var item1 ListNode
 	item1.data = 5
 	list1.next = &item1
 
-	var item2 Node
+	var item2 ListNode
 	item2.data = 8
 	item1.next = &item2
 	item2.next = nil
 	printList(&list1)
 
-	var list2 Node
+	var list2 ListNode
 	list2.data = 3
 
-	var item3 Node
+	var item3 ListNode
 	item3.data = 6;
 	list2.next = &item3
 
-	var item4 Node
+	var item4 ListNode
 	item4.data = 7
 	item3.next = &item4
 	item4.next = nil
