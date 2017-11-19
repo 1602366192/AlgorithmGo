@@ -65,7 +65,7 @@ func merge(head1, head2 *Node) Node {
 	return head;
 }
 
-func main() {
+func testMerge() {
 	var list1 Node
 	list1.data = 2
 
